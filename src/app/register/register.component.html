@@ -1,0 +1,81 @@
+<div class="app-body">
+  <main class="main d-flex align-items-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 mx-auto text-center">
+            <img src="assets/img/brand/initlogo.png" style="height: 80%; width: 80%;"/>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 mx-auto">
+          <div class="card mx-4">
+            <div class="card-body p-4">
+              <form (ngSubmit)="register()" #registerForm="ngForm">
+                <h1>Register</h1>
+                <p class="text-muted">Create your account</p>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="icon-user"></i></span>
+                  </div>
+                  <input type="text" class="form-control" name="user" id="user" placeholder="Username" autocomplete="username" required
+                        [(ngModel)]="username" #user="ngModel">
+                  <div [hidden]="user.valid || user.pristine" class="empty-value">
+                    <div>
+                      Username is required!
+                    </div>
+                  </div>
+                </div><!--/div-input-username-->
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="icon-lock"></i></span>
+                  </div>
+                  <input type="password" class="form-control" name="pass" id="pass" placeholder="Password" autocomplete="current-password" required
+                            [(ngModel)]="password" #pass="ngModel">
+                  <div [hidden]="pass.valid || pass.pristine" class="empty-value">
+                    <div>
+                      Password is required!
+                    </div>
+                  </div>
+                </div><!--/div-input-password-->
+                <div class="input-group mb-4">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="icon-lock"></i></span>
+                  </div>
+                  <input type="password" class="form-control" name="passConfirm" id="passConfirm" placeholder="Password" autocomplete="current-password" required
+                            [(ngModel)]="passwordConfirmation" #passConfirm="ngModel">
+                  <div [hidden]="passConfirm.valid || passConfirm.pristine" class="empty-value">
+                    <div>
+                      Password is required!
+                    </div>
+                  </div>
+                </div><!--/div-input-password-confirmation-->
+                <div class="row">
+                  <div class="col">
+                    <div class="alert alert-danger" *ngIf="registrationError">
+                        <strong>Failed to create account!</strong> {{registrationErrorMessage}}
+                    </div>
+                  </div>
+                </div><!--/row-alert-error-->
+                <div class="row">
+                  <div class="col">
+                    <div class="alert alert-success" *ngIf="registrationSuccess">
+                        <strong>Registration saved!</strong> Please login now.
+                    </div>
+                  </div>
+                </div><!--/row-alert-error-->
+                <button type="submit" class="btn btn-block btn-success" [disabled]="!registerForm.form.valid">Create Account</button>
+              </form>
+            </div>
+            <div class="card-footer p-4">
+              <div class="row">
+                <div class="col">
+                  <button class="btn btn-block btn-primary" type="button" [routerLink]="['']"><span>Login</span></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
